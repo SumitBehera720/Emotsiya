@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { NationalChallenges } from './components/NationalChallenges';
-import { CampaignBanner } from './components/CampaignBanner';
-import { ApproachSection } from './components/ApproachSection';
-import { LifeSkillsSection } from './components/LifeSkillsSection';
 import { CoursesSection, Course } from './components/CoursesSection';
 import { CourseModal } from './components/CourseModal';
 import { EventSection } from './components/EventSection';
 import { GallerySection } from './components/GallerySection';
-import { PricingSection } from './components/PricingSection';
 import { PassModal } from './components/PassModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Footer } from './components/Footer';
@@ -52,59 +46,29 @@ export const App: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1">
-        {/* Full-Screen Hero Visual Banner */}
+        {/* Full-Screen Hero Visual Banner (Kept untouched) */}
         <Hero onOpenPassModal={handleOpenPassModal} />
 
-        {/* About & Core Philosophy */}
-        <ScrollSection>
-          <AboutSection />
-        </ScrollSection>
-
-        {/* Masterclasses & Courses Section */}
+        {/* 1. Masterclasses & Certified Courses Section */}
         <ScrollSection>
           <CoursesSection onOpenCourseModal={handleOpenCourseModal} />
         </ScrollSection>
 
-        {/* The 7 National Challenges */}
-        <ScrollSection>
-          <NationalChallenges />
-        </ScrollSection>
-
-        {/* Middle Section Visual Campaign Banner */}
-        <ScrollSection>
-          <CampaignBanner onOpenPassModal={handleOpenPassModal} />
-        </ScrollSection>
-
-        {/* 6-Step Transformation Approach */}
-        <ScrollSection>
-          <ApproachSection />
-        </ScrollSection>
-
-        {/* Life Skills & Employability */}
-        <ScrollSection>
-          <LifeSkillsSection />
-        </ScrollSection>
-
-        {/* Event Details Section (Live, Past, Future) */}
+        {/* 2. Live & Upcoming Events Section */}
         <ScrollSection>
           <EventSection onOpenPassModal={handleOpenPassModal} />
         </ScrollSection>
 
-        {/* Filterable Media & Field Action Gallery */}
+        {/* 3. Filterable Media & Impact Gallery Section */}
         <ScrollSection>
           <GallerySection />
         </ScrollSection>
-
-        {/* Pricing Tiers (₹199 & ₹499 Passes) */}
-        <ScrollSection>
-          <PricingSection onSelectPass={handleOpenPassModal} />
-        </ScrollSection>
       </main>
 
-      {/* Footer */}
+      {/* Minimalist Footer */}
       <Footer />
 
-      {/* Interactive Event Pass Enrollment Modal */}
+      {/* Interactive Event Pass Modal */}
       <PassModal
         isOpen={isPassModalOpen}
         initialTier={selectedPassTier}
