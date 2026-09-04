@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { CoursesSection, Course } from './components/CoursesSection';
 import { CourseModal } from './components/CourseModal';
 import { EventSection } from './components/EventSection';
+import { InteractiveSection } from './components/InteractiveSection';
 import { GallerySection } from './components/GallerySection';
 import { PassModal } from './components/PassModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
@@ -40,13 +41,13 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#1a1a1a] flex flex-col font-sans selection:bg-[#d96b52] selection:text-white">
-      {/* Sticky Translucent Header Navbar */}
+    <div className="min-h-screen bg-[#f4fbfb] text-[#1e293b] flex flex-col font-sans selection:bg-[#0d9488] selection:text-white">
+      {/* Sticky Header Navbar */}
       <Navbar onOpenPassModal={handleOpenPassModal} />
 
       {/* Main Content */}
       <main className="flex-1">
-        {/* Full-Screen Hero Visual Banner (Kept untouched) */}
+        {/* Full-Screen Hero Visual Banner */}
         <Hero onOpenPassModal={handleOpenPassModal} />
 
         {/* 1. Masterclasses & Certified Courses Section */}
@@ -59,7 +60,12 @@ export const App: React.FC = () => {
           <EventSection onOpenPassModal={handleOpenPassModal} />
         </ScrollSection>
 
-        {/* 3. Filterable Media & Impact Gallery Section */}
+        {/* 3. Interactive User Engagement (Quiz & National Civic Pledge) */}
+        <ScrollSection>
+          <InteractiveSection onOpenPassModal={handleOpenPassModal} />
+        </ScrollSection>
+
+        {/* 4. Filterable Media & Impact Gallery Section */}
         <ScrollSection>
           <GallerySection />
         </ScrollSection>

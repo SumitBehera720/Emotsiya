@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
   const navLinks = [
     { name: 'Courses', href: '#courses' },
     { name: 'Events', href: '#events' },
+    { name: 'Take Pledge', href: '#interactive' },
     { name: 'Gallery', href: '#gallery' },
   ];
 
@@ -36,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo Only (Text removed as requested) */}
+          {/* Brand Logo Only */}
           <a href="#home" className="flex items-center group">
             <img
               src="/logo.png"
