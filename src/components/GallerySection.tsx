@@ -70,21 +70,21 @@ export const GallerySection: React.FC = () => {
     : galleryItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="gallery" className="py-24 lg:py-32 bg-[#faf8f5] relative overflow-hidden">
+    <section id="gallery" className="py-24 lg:py-32 bg-[#f4fbfb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
-        {/* Clean Header */}
+        {/* Header */}
         <div className="max-w-2xl mx-auto text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d96b52]/10 border border-[#d96b52]/20 text-[#d96b52] text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0d9488]/10 border border-[#0d9488]/20 text-[#0d9488] text-xs font-bold uppercase tracking-wider">
             <ImageIcon className="w-3.5 h-3.5" />
             <span>Impact Gallery</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-tight font-serif-heading">
-            Field Action <span className="text-[#d96b52] italic font-serif">Moments</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#164e63] leading-tight font-serif-heading">
+            Field Action <span className="text-[#0d9488] italic font-serif">Moments</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
             Real photos from school workshops, community drives, and civic rallies across India.
           </p>
 
@@ -96,8 +96,8 @@ export const GallerySection: React.FC = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${
                   activeCategory === cat
-                    ? 'bg-[#d96b52] text-white shadow-sm'
-                    : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
+                    ? 'bg-[#0d9488] text-white shadow-sm'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-teal-50'
                 }`}
               >
                 {cat}
@@ -112,9 +112,9 @@ export const GallerySection: React.FC = () => {
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className="bg-white rounded-3xl border border-stone-200/80 overflow-hidden cursor-pointer shadow-sm hover:shadow-xl hover:border-[#d96b52]/30 transition-all duration-300 group"
+              className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden cursor-pointer shadow-sm hover:shadow-xl hover:border-[#0d9488]/30 transition-all duration-300 group"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden bg-stone-100 relative">
+              <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 relative">
                 <img
                   src={item.url}
                   alt={item.title}
@@ -123,21 +123,21 @@ export const GallerySection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                 
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-[#1a1a1a] shadow-sm">
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-slate-800 shadow-sm">
                   {item.category}
                 </span>
 
-                <div className="absolute top-4 right-4 p-2 rounded-full bg-white/90 text-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
+                <div className="absolute top-4 right-4 p-2 rounded-full bg-white/90 text-slate-800 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
                   <Maximize2 className="w-4 h-4" />
                 </div>
               </div>
 
               <div className="p-5 space-y-1.5">
-                <p className="text-xs text-[#d96b52] font-bold flex items-center gap-1">
+                <p className="text-xs text-[#0d9488] font-bold flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" />
                   <span>{item.location}</span>
                 </p>
-                <h3 className="text-base font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug line-clamp-1">
+                <h3 className="text-base font-bold text-[#164e63] group-hover:text-[#0d9488] transition-colors leading-snug line-clamp-1">
                   {item.title}
                 </h3>
               </div>
@@ -151,12 +151,12 @@ export const GallerySection: React.FC = () => {
             <div className="relative max-w-3xl w-full rounded-3xl bg-white overflow-hidden shadow-2xl space-y-4 p-6 sm:p-8">
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-stone-100 text-stone-700 hover:text-black transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 text-slate-700 hover:text-black transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-stone-100 shadow-inner">
+              <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-slate-100 shadow-inner">
                 <img
                   src={selectedItem.url}
                   alt={selectedItem.title}
@@ -166,13 +166,13 @@ export const GallerySection: React.FC = () => {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#d96b52]/10 text-[#d96b52] text-xs font-bold">
+                  <span className="px-3 py-1 rounded-full bg-[#0d9488]/10 text-[#0d9488] text-xs font-bold">
                     {selectedItem.category}
                   </span>
-                  <span className="text-xs text-stone-500 font-medium">• {selectedItem.location}</span>
+                  <span className="text-xs text-slate-500 font-medium">• {selectedItem.location}</span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a1a]">{selectedItem.title}</h3>
-                <p className="text-sm text-stone-600 leading-relaxed font-medium">{selectedItem.desc}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#164e63]">{selectedItem.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-medium">{selectedItem.desc}</p>
               </div>
             </div>
           </div>

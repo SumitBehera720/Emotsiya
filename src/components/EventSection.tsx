@@ -57,21 +57,21 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
   ];
 
   return (
-    <section id="events" className="py-24 lg:py-32 bg-[#faf8f5] relative overflow-hidden">
+    <section id="events" className="py-24 lg:py-32 bg-[#f4fbfb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d96b52]/10 border border-[#d96b52]/20 text-[#d96b52] text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0d9488]/10 border border-[#0d9488]/20 text-[#0d9488] text-xs font-bold uppercase tracking-wider">
             <Calendar className="w-3.5 h-3.5" />
             <span>National Events</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-tight font-serif-heading">
-            Live Events & <span className="text-[#d96b52] italic font-serif">Youth Summits</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#164e63] leading-tight font-serif-heading">
+            Live Events & <span className="text-[#0d9488] italic font-serif">Youth Summits</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
             Participate in live interactive townhalls and national leadership summits across India.
           </p>
 
@@ -81,8 +81,8 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
               onClick={() => setActiveTab('live')}
               className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all ${
                 activeTab === 'live'
-                  ? 'bg-[#d96b52] text-white shadow-sm'
-                  : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
+                  ? 'bg-[#0d9488] text-white shadow-sm'
+                  : 'bg-white border border-slate-200 text-slate-700 hover:bg-teal-50'
               }`}
             >
               🔥 Live & Today ({liveEvents.length})
@@ -92,8 +92,8 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
               onClick={() => setActiveTab('upcoming')}
               className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all ${
                 activeTab === 'upcoming'
-                  ? 'bg-[#d96b52] text-white shadow-sm'
-                  : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
+                  ? 'bg-[#0d9488] text-white shadow-sm'
+                  : 'bg-white border border-slate-200 text-slate-700 hover:bg-teal-50'
               }`}
             >
               📅 Upcoming Events ({upcomingEvents.length})
@@ -107,53 +107,53 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
             {liveEvents.map((evt) => (
               <div
                 key={evt.id}
-                className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm hover:shadow-xl hover:border-[#d96b52]/30 transition-all flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl hover:border-[#0d9488]/30 transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-4">
-                  <div className="relative h-52 rounded-2xl overflow-hidden bg-stone-100">
+                  <div className="relative h-52 rounded-2xl overflow-hidden bg-slate-100">
                     <img src={evt.image} alt={evt.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#d96b52] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#0d9488] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
                       <span className="w-2 h-2 rounded-full bg-white animate-ping" />
                       <span>{evt.status}</span>
                     </div>
 
                     <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold flex items-center justify-between">
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-amber-300" />
+                        <Clock className="w-3.5 h-3.5 text-teal-300" />
                         <span>{evt.date}</span>
                       </span>
                       <span className="flex items-center gap-1">
-                        <Users className="w-3.5 h-3.5 text-amber-300" />
+                        <Users className="w-3.5 h-3.5 text-teal-300" />
                         <span>{evt.attendees}</span>
                       </span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-[#164e63] group-hover:text-[#0d9488] transition-colors leading-snug">
                     {evt.title}
                   </h3>
 
-                  <p className="text-xs text-stone-500 font-bold uppercase tracking-wider flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-[#d96b52]" />
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#0d9488]" />
                     <span>{evt.location}</span>
                   </p>
 
-                  <p className="text-sm text-stone-600 font-medium leading-relaxed">
+                  <p className="text-sm text-slate-600 font-medium leading-relaxed">
                     {evt.desc}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-stone-100 flex items-center justify-between mt-6">
+                <div className="pt-6 border-t border-slate-100 flex items-center justify-between mt-6">
                   <div>
-                    <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block">Access Pass</span>
-                    <span className="text-xl font-black text-[#d96b52]">₹{evt.passRequired}</span>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Access Pass</span>
+                    <span className="text-xl font-black text-[#0d9488]">₹{evt.passRequired}</span>
                   </div>
 
                   <button
                     onClick={() => onOpenPassModal(evt.passRequired)}
-                    className="px-6 py-3 rounded-full bg-[#d96b52] hover:bg-[#c85a42] text-white font-bold text-xs shadow-sm hover:shadow-md transition-all flex items-center gap-2"
+                    className="px-6 py-3 rounded-full bg-[#0d9488] hover:bg-[#0f766e] text-white font-bold text-xs shadow-sm hover:shadow-md transition-all flex items-center gap-2"
                   >
                     <Video className="w-4 h-4" />
                     <span>Join Event</span>
@@ -170,36 +170,36 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
             {upcomingEvents.map((evt) => (
               <div
                 key={evt.id}
-                className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm hover:shadow-xl hover:border-[#d96b52]/30 transition-all flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl hover:border-[#0d9488]/30 transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-4">
-                  <div className="relative h-52 rounded-2xl overflow-hidden bg-stone-100">
+                  <div className="relative h-52 rounded-2xl overflow-hidden bg-slate-100">
                     <img src={evt.image} alt={evt.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 left-3 px-3.5 py-1 rounded-full bg-white/95 text-[#1a1a1a] text-xs font-bold shadow-sm">
+                    <div className="absolute top-3 left-3 px-3.5 py-1 rounded-full bg-white/95 text-slate-800 text-xs font-bold shadow-sm">
                       {evt.countdown}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-[#164e63] group-hover:text-[#0d9488] transition-colors leading-snug">
                     {evt.title}
                   </h3>
 
-                  <p className="text-xs text-stone-500 font-medium flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-[#d96b52]" />
+                  <p className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#0d9488]" />
                     <span>{evt.date}</span>
                   </p>
 
-                  <p className="text-sm text-stone-600 font-medium leading-relaxed">
+                  <p className="text-sm text-slate-600 font-medium leading-relaxed">
                     {evt.desc}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-stone-100 flex items-center justify-between mt-6">
-                  <span className="text-lg font-black text-[#d96b52]">₹{evt.passRequired} Pass</span>
+                <div className="pt-6 border-t border-slate-100 flex items-center justify-between mt-6">
+                  <span className="text-lg font-black text-[#0d9488]">₹{evt.passRequired} Pass</span>
 
                   <button
                     onClick={() => onOpenPassModal(evt.passRequired)}
-                    className="px-6 py-3 rounded-full bg-white border border-stone-300 hover:border-[#d96b52] hover:text-[#d96b52] text-[#1a1a1a] font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm"
+                    className="px-6 py-3 rounded-full bg-white border border-slate-300 hover:border-[#0d9488] hover:text-[#0d9488] text-slate-800 font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm"
                   >
                     <span>Reserve Seat</span>
                     <ArrowRight className="w-3.5 h-3.5" />
