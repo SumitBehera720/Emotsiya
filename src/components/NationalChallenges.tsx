@@ -63,68 +63,70 @@ export const NationalChallenges: React.FC = () => {
   ];
 
   return (
-    <section id="challenges" className="py-10 sm:py-16 md:py-24 bg-[#faf7f2] relative overflow-hidden">
-      
+    <section id="challenges" className="py-20 md:py-28 bg-[#faf8f5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <RevealOnScroll className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-4 mb-8 sm:mb-14">
-          <span className="px-3.5 py-1 rounded-full bg-white/80 border border-amber-900/15 text-amber-900 text-[10px] sm:text-xs font-black tracking-wider uppercase backdrop-blur-md shadow-sm">
-            The 7 National Challenges
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-            Seven Challenges. <span className="font-serif italic text-amber-800">One Human Solution.</span>
+        <RevealOnScroll className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d96b52]/10 border border-[#d96b52]/20 text-[#d96b52] text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>The 7 National Challenges</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight font-serif-heading">
+            Seven Challenges. <span className="text-[#d96b52] italic font-serif">One Human Solution.</span>
           </h2>
-          <p className="text-slate-700 text-xs sm:text-base leading-relaxed font-medium">
+
+          <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
             Emotsiya identifies seven national challenges shaping everyday life in India. Each looks different on the surface — yet all trace back to human behaviour.
           </p>
         </RevealOnScroll>
 
-        {/* Visual Photo Cards 2-Column Mobile Grid with Staggered Scroll Reveal */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+        {/* Visual Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {challenges.map((c, idx) => {
             const Icon = c.icon;
             return (
               <RevealOnScroll key={c.num} delay={(idx % 4) * 60}>
-                <div className="group relative rounded-2xl sm:rounded-3xl bg-white/80 border border-white shadow-md hover:shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden h-full">
+                <div className="bg-white rounded-3xl border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-[#d96b52]/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden h-full group">
                   <div>
                     {/* Photo Header Container */}
-                    <div className="aspect-[16/11] w-full relative overflow-hidden bg-slate-900 image-zoom-container">
+                    <div className="aspect-[16/11] w-full relative overflow-hidden bg-stone-100">
                       <img
                         src={c.image}
                         alt={c.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       
-                      <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-white/95 text-slate-900 text-[9px] sm:text-xs font-black font-mono shadow-sm">
+                      <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 text-[#1a1a1a] text-xs font-black font-mono shadow-sm">
                         {c.num}
                       </span>
-                      <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-900 text-amber-100 text-[8px] sm:text-[10px] font-black shadow-sm">
+                      <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#d96b52] text-white text-[11px] font-bold shadow-sm">
                         {c.tag}
                       </span>
 
-                      <div className="absolute bottom-2 left-2 p-1.5 sm:p-2 rounded-lg bg-white/90 text-amber-800 shadow-sm backdrop-blur-md">
-                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <div className="absolute bottom-3 left-3 p-2 rounded-xl bg-white/90 text-[#d96b52] shadow-sm">
+                        <Icon className="w-4 h-4" />
                       </div>
                     </div>
 
-                    <div className="p-3 sm:p-5 space-y-1 sm:space-y-2">
-                      <h3 className="text-xs sm:text-base font-black text-slate-900 group-hover:text-amber-800 transition-colors leading-snug line-clamp-2">
+                    <div className="p-5 space-y-2">
+                      <h3 className="text-lg font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug">
                         {c.title}
                       </h3>
-                      <p className="text-[10px] sm:text-xs text-slate-600 leading-relaxed font-medium line-clamp-2 sm:line-clamp-none">
+                      <p className="text-xs text-stone-600 leading-relaxed font-medium">
                         {c.desc}
                       </p>
                     </div>
                   </div>
 
-                  <div className="px-3 sm:px-5 pb-3 sm:pb-5 pt-1 border-t border-slate-200/80 flex items-center justify-between text-[10px] sm:text-xs font-extrabold text-slate-700 group-hover:text-amber-800 transition-colors">
-                    <span className="flex items-center gap-1">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                      Active
+                  <div className="px-5 pb-5 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-stone-700 group-hover:text-[#d96b52] transition-colors">
+                    <span className="flex items-center gap-1.5 text-stone-500">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Active Program</span>
                     </span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
               </RevealOnScroll>

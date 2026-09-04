@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Maximize2, X, MapPin } from 'lucide-react';
+import { Maximize2, X, MapPin, Image as ImageIcon } from 'lucide-react';
 
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -70,18 +70,21 @@ export const GallerySection: React.FC = () => {
     : galleryItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="gallery" className="py-10 sm:py-16 md:py-24 bg-[#faf7f2] relative overflow-hidden">
+    <section id="gallery" className="py-20 md:py-28 bg-[#faf8f5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-4 mb-8 sm:mb-14">
-          <span className="px-3.5 py-1 rounded-full bg-white/80 border border-amber-900/15 text-amber-900 text-[10px] sm:text-xs font-black tracking-wider uppercase backdrop-blur-md shadow-sm">
-            Media & Field Action
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-            Emotsiya <span className="font-serif italic text-amber-800">Impact Gallery</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d96b52]/10 border border-[#d96b52]/20 text-[#d96b52] text-xs font-bold uppercase tracking-wider">
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>Media & Field Action</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight font-serif-heading">
+            Emotsiya <span className="text-[#d96b52] italic font-serif">Impact Gallery</span>
           </h2>
-          <p className="text-slate-700 text-xs sm:text-base font-medium">
+
+          <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
             Real moments from our school programs, community cleanliness drives, youth workshops, and civic action campaigns.
           </p>
 
@@ -91,10 +94,10 @@ export const GallerySection: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-extrabold transition-all backdrop-blur-md ${
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
                   activeCategory === cat
-                    ? 'bg-amber-900 text-white shadow-md scale-[1.02]'
-                    : 'bg-white/80 border border-slate-300 text-slate-800 hover:bg-white'
+                    ? 'bg-[#d96b52] text-white shadow-md'
+                    : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
                 }`}
               >
                 {cat}
@@ -103,38 +106,38 @@ export const GallerySection: React.FC = () => {
           </div>
         </div>
 
-        {/* Gallery Grid (2-column on mobile) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className="group relative rounded-2xl sm:rounded-3xl bg-white/85 border border-white overflow-hidden cursor-pointer shadow-md backdrop-blur-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="bg-white rounded-3xl border border-stone-200/90 overflow-hidden cursor-pointer shadow-sm hover:shadow-xl hover:border-[#d96b52]/40 transition-all duration-300 group"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden bg-slate-900 relative image-zoom-container">
+              <div className="aspect-[4/3] w-full overflow-hidden bg-stone-100 relative">
                 <img
                   src={item.url}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                 
-                <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[9px] sm:text-xs font-black text-slate-900 shadow-sm">
+                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-[#1a1a1a] shadow-sm">
                   {item.category}
                 </span>
 
-                <div className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm backdrop-blur-md">
-                  <Maximize2 className="w-3.5 h-3.5" />
+                <div className="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
+                  <Maximize2 className="w-4 h-4" />
                 </div>
               </div>
 
-              <div className="p-3 sm:p-5 space-y-0.5">
-                <p className="text-[9px] sm:text-[11px] text-amber-800 font-mono font-bold flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-amber-700" />
-                  <span className="line-clamp-1">{item.location}</span>
+              <div className="p-5 space-y-1.5">
+                <p className="text-xs text-[#d96b52] font-bold flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>{item.location}</span>
                 </p>
-                <h3 className="text-xs sm:text-base font-black text-slate-900 group-hover:text-amber-800 transition-colors leading-snug line-clamp-1">
+                <h3 className="text-base font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug line-clamp-1">
                   {item.title}
                 </h3>
               </div>
@@ -144,16 +147,16 @@ export const GallerySection: React.FC = () => {
 
         {/* Lightbox Modal */}
         {selectedItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-            <div className="relative max-w-4xl w-full rounded-2xl sm:rounded-3xl bg-white/95 border border-white overflow-hidden shadow-2xl space-y-4 p-5 sm:p-7 backdrop-blur-2xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+            <div className="relative max-w-4xl w-full rounded-3xl bg-white overflow-hidden shadow-2xl space-y-4 p-6 md:p-8">
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 text-slate-800 hover:text-slate-950 border border-slate-200 shadow-sm"
+                className="absolute top-4 right-4 p-2 rounded-full bg-stone-100 text-stone-700 hover:text-black transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="rounded-xl overflow-hidden aspect-[16/9] bg-slate-900 shadow-inner">
+              <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-stone-100 shadow-inner">
                 <img
                   src={selectedItem.url}
                   alt={selectedItem.title}
@@ -163,13 +166,13 @@ export const GallerySection: React.FC = () => {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-0.5 rounded-full bg-amber-100 text-amber-900 text-xs font-black">
+                  <span className="px-3 py-1 rounded-full bg-[#d96b52]/10 text-[#d96b52] text-xs font-bold">
                     {selectedItem.category}
                   </span>
-                  <span className="text-xs text-slate-600 font-mono font-bold">• {selectedItem.location}</span>
+                  <span className="text-xs text-stone-500 font-medium">• {selectedItem.location}</span>
                 </div>
-                <h3 className="text-lg sm:text-2xl font-black text-slate-900">{selectedItem.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{selectedItem.desc}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a1a]">{selectedItem.title}</h3>
+                <p className="text-sm text-stone-600 leading-relaxed font-medium">{selectedItem.desc}</p>
               </div>
             </div>
           </div>

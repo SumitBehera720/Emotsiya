@@ -6,6 +6,8 @@ import { NationalChallenges } from './components/NationalChallenges';
 import { CampaignBanner } from './components/CampaignBanner';
 import { ApproachSection } from './components/ApproachSection';
 import { LifeSkillsSection } from './components/LifeSkillsSection';
+import { CoursesSection, Course } from './components/CoursesSection';
+import { CourseModal } from './components/CourseModal';
 import { EventSection } from './components/EventSection';
 import { GallerySection } from './components/GallerySection';
 import { PricingSection } from './components/PricingSection';
@@ -30,24 +32,37 @@ export const App: React.FC = () => {
   const [isPassModalOpen, setIsPassModalOpen] = useState(false);
   const [selectedPassTier, setSelectedPassTier] = useState<'199' | '499'>('199');
 
+  const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+
   const handleOpenPassModal = (tier: '199' | '499' = '199') => {
     setSelectedPassTier(tier);
     setIsPassModalOpen(true);
   };
 
+  const handleOpenCourseModal = (course: Course) => {
+    setSelectedCourse(course);
+    setIsCourseModalOpen(true);
+  };
+
   return (
-    <div className="min-h-screen bg-[#fffdf9] text-slate-900 flex flex-col font-sans selection:bg-amber-600 selection:text-white">
+    <div className="min-h-screen bg-[#faf8f5] text-[#1a1a1a] flex flex-col font-sans selection:bg-[#d96b52] selection:text-white">
       {/* Sticky Translucent Header Navbar */}
       <Navbar onOpenPassModal={handleOpenPassModal} />
 
       {/* Main Content */}
       <main className="flex-1">
-        {/* Interactive Full-Screen Hero Visual Banner */}
+        {/* Full-Screen Hero Visual Banner */}
         <Hero onOpenPassModal={handleOpenPassModal} />
 
         {/* About & Core Philosophy */}
         <ScrollSection>
           <AboutSection />
+        </ScrollSection>
+
+        {/* Masterclasses & Courses Section */}
+        <ScrollSection>
+          <CoursesSection onOpenCourseModal={handleOpenCourseModal} />
         </ScrollSection>
 
         {/* The 7 National Challenges */}
@@ -94,6 +109,13 @@ export const App: React.FC = () => {
         isOpen={isPassModalOpen}
         initialTier={selectedPassTier}
         onClose={() => setIsPassModalOpen(false)}
+      />
+
+      {/* Interactive Course Enrollment Modal */}
+      <CourseModal
+        isOpen={isCourseModalOpen}
+        course={selectedCourse}
+        onClose={() => setIsCourseModalOpen(false)}
       />
 
       {/* Floating WhatsApp Quick Support Widget */}

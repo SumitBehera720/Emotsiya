@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, BookOpen } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface NavbarProps {
@@ -21,42 +21,45 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: '7 Challenges', href: '#challenges' },
-    { name: 'Approach', href: '#approach' },
+    { name: 'Challenges', href: '#challenges' },
+    { name: 'Courses', href: '#courses' },
     { name: 'Events', href: '#events' },
     { name: 'Gallery', href: '#gallery' },
+    { name: 'Methodology', href: '#approach' },
+    { name: 'Benefits', href: '#skills' },
     { name: 'Passes', href: '#pricing' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'py-2 liquid-glass-header shadow-md'
-          : 'py-3 bg-[#faf7f2]/90 backdrop-blur-md border-b border-amber-900/10'
+          ? 'py-2 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200/80'
+          : 'py-4 bg-[#faf8f5]/90 backdrop-blur-md border-b border-stone-200/60'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Compact Borderless Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
+          {/* Logo */}
+          <a href="#home" className="flex items-center gap-2.5 group">
             <img
               src="/logo.png"
               alt="Emotsiya Logo"
-              className="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
+            <span className="font-serif text-2xl font-black tracking-tight text-[#1a1a1a]">
+              EMOTSIYA
+            </span>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden xl:flex items-center space-x-1 px-3 py-1.5 rounded-full bg-white/80 border border-amber-900/10 shadow-sm backdrop-blur-xl">
+          <nav className="hidden xl:flex items-center space-x-1 px-4 py-1.5 rounded-full bg-white/90 border border-stone-200 shadow-sm backdrop-blur-xl">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs font-extrabold text-slate-800 hover:text-amber-900 hover:bg-amber-100/70 rounded-full transition-all"
+                className="px-3.5 py-1.5 text-xs font-bold text-stone-700 hover:text-[#d96b52] hover:bg-stone-100/70 rounded-full transition-all"
               >
                 {link.name}
               </a>
@@ -65,9 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
 
           {/* Right Action CTAs */}
           <div className="hidden sm:flex items-center gap-2.5">
+            <a
+              href="#courses"
+              className="px-4 py-2 text-xs font-extrabold text-[#d96b52] bg-[#d96b52]/10 hover:bg-[#d96b52]/20 border border-[#d96b52]/30 rounded-full transition-all flex items-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Explore Courses</span>
+            </a>
+
             <button
               onClick={() => onOpenPassModal('199')}
-              className="px-4 py-2 text-xs font-extrabold text-white bg-gradient-to-r from-amber-700 to-amber-900 hover:from-amber-800 hover:to-amber-950 rounded-full transition-all shadow-md hover:scale-105 flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-extrabold text-white bg-[#d96b52] hover:bg-[#c85a42] rounded-full transition-all shadow-md hover:scale-105 flex items-center gap-1.5"
             >
               <Sparkles className="w-3.5 h-3.5 fill-white" />
               <span>Pass ₹199 / ₹499</span>
@@ -77,10 +88,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
               href="https://wa.me/918808037280?text=Hi%20Emotsiya%20Team,%20I%20want%20to%20inquire%20about%20the%20National%20Civic%20Initiative."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-extrabold text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-full shadow-md transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 p-2.5 text-xs font-extrabold text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-full shadow-md transition-all hover:scale-105"
+              aria-label="WhatsApp Chat"
             >
               <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>WhatsApp Chat</span>
             </a>
           </div>
 
@@ -98,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-800 hover:text-slate-900 shadow-sm"
+              className="p-2 rounded-xl bg-white border border-stone-200 text-stone-800 shadow-sm"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -110,42 +121,41 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden mt-2 mx-4 p-5 rounded-3xl bg-white/95 border border-amber-900/10 shadow-2xl space-y-4 backdrop-blur-2xl animate-in fade-in duration-200">
+        <div className="xl:hidden mt-2 mx-4 p-5 rounded-3xl bg-white border border-stone-200 shadow-2xl space-y-4 backdrop-blur-2xl animate-in fade-in duration-200">
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3.5 py-2 text-xs font-extrabold text-slate-800 hover:text-amber-900 hover:bg-amber-50 rounded-xl"
+                className="block px-3.5 py-2 text-xs font-bold text-stone-800 hover:text-[#d96b52] hover:bg-stone-50 rounded-xl"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2.5">
+          <div className="pt-3 border-t border-stone-200 flex flex-col gap-2.5">
+            <a
+              href="#courses"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-3 text-xs font-bold text-[#d96b52] bg-[#d96b52]/10 rounded-2xl"
+            >
+              Browse Certified Courses
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenPassModal('199');
               }}
-              className="w-full text-center py-3 text-xs font-extrabold text-white bg-amber-900 rounded-2xl shadow-md"
+              className="w-full text-center py-3 text-xs font-bold text-white bg-[#d96b52] rounded-2xl shadow-md"
             >
               Get Event Pass (₹199 / ₹499)
             </button>
-            <a
-              href="https://wa.me/918808037280"
-              target="_blank"
-              rel="noreferrer"
-              className="w-full text-center py-3 text-xs font-extrabold text-white bg-[#25D366] rounded-2xl shadow-md flex items-center justify-center gap-2"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>Chat on WhatsApp (+91 88080 37280)</span>
-            </a>
           </div>
         </div>
       )}
     </header>
   );
 };
+

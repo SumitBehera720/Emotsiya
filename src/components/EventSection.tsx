@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Video, ArrowRight, Download, MapPin, AlertCircle } from 'lucide-react';
+import { Calendar, Clock, Video, ArrowRight, MapPin, Users } from 'lucide-react';
 
 interface EventSectionProps {
   onOpenPassModal: (tier?: '199' | '499') => void;
@@ -104,175 +104,175 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
   ];
 
   return (
-    <section id="events" className="py-10 sm:py-16 md:py-24 bg-[#faf7f2] relative overflow-hidden">
+    <section id="events" className="py-20 md:py-28 bg-[#faf8f5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-4 mb-8 sm:mb-14">
-          <span className="px-3.5 py-1 rounded-full bg-white/80 border border-amber-900/15 text-amber-900 text-[10px] sm:text-xs font-black tracking-wider uppercase backdrop-blur-md shadow-sm">
-            Events Hub
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-            Emotsiya <span className="font-serif italic text-amber-800">Event Details</span>
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d96b52]/10 border border-[#d96b52]/20 text-[#d96b52] text-xs font-bold uppercase tracking-wider">
+            <Calendar className="w-3.5 h-3.5" />
+            <span>National Movement Events</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight font-serif-heading">
+            Join Our <span className="text-[#d96b52] italic font-serif">Live Events & Summits</span>
           </h2>
-          <p className="text-slate-700 text-xs sm:text-base font-medium">
-            Join live sessions, reserve your spot for upcoming national drives, or explore past event recaps.
+
+          <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
+            Real-world civic action drives, online townhalls, and national leadership summits empowering youth across India.
           </p>
 
-          {/* Navigation Tabs */}
-          <div className="inline-flex p-1.5 rounded-2xl bg-white/85 border border-white shadow-md backdrop-blur-xl mt-4">
+          {/* Tabs Switcher */}
+          <div className="flex items-center justify-center gap-2 pt-4 flex-wrap">
             <button
               onClick={() => setActiveTab('live')}
-              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
                 activeTab === 'live'
-                  ? 'bg-amber-900 text-white shadow-sm'
-                  : 'text-slate-700 hover:text-slate-900'
+                  ? 'bg-[#d96b52] text-white shadow-md'
+                  : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-amber-300 animate-ping"></span>
-              <span>Live Events</span>
+              🔥 Live & Today ({liveEvents.length})
             </button>
+
             <button
               onClick={() => setActiveTab('future')}
-              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
                 activeTab === 'future'
-                  ? 'bg-amber-900 text-white shadow-sm'
-                  : 'text-slate-700 hover:text-slate-900'
+                  ? 'bg-[#d96b52] text-white shadow-md'
+                  : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
               }`}
             >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Upcoming</span>
+              📅 Upcoming Events ({futureEvents.length})
             </button>
+
             <button
               onClick={() => setActiveTab('past')}
-              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
                 activeTab === 'past'
-                  ? 'bg-amber-900 text-white shadow-sm'
-                  : 'text-slate-700 hover:text-slate-900'
+                  ? 'bg-[#d96b52] text-white shadow-md'
+                  : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
               }`}
             >
-              <Clock className="w-3.5 h-3.5" />
-              <span>Past</span>
+              ✨ Past Impact ({pastEvents.length})
             </button>
           </div>
         </div>
 
-        {/* Tab 1: LIVE EVENTS */}
+        {/* Live Events Grid */}
         {activeTab === 'live' && (
-          <div className="space-y-4">
-            <div className="p-3 rounded-xl bg-amber-100/70 border border-amber-300 text-slate-900 text-xs font-bold backdrop-blur-md flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 text-amber-800" />
-              <span>Active live sessions require a standard ₹199 or ₹499 Event Pass for full interactive Q&A access.</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {liveEvents.map((evt) => (
-                <div
-                  key={evt.id}
-                  className="rounded-2xl sm:rounded-3xl bg-white/85 border border-white shadow-lg backdrop-blur-2xl hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
-                >
-                  <div>
-                    <div className="h-40 sm:h-48 w-full relative overflow-hidden bg-slate-900 image-zoom-container">
-                      <img
-                        src={evt.image}
-                        alt={evt.title}
-                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent"></div>
-                      
-                      <div className="absolute top-3 left-3 flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-[10px] sm:text-xs font-black flex items-center gap-1 shadow-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-                          {evt.status}
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-3 left-3 right-3 text-white">
-                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-amber-300 font-mono">LIVE STREAMING</span>
-                        <h3 className="text-sm sm:text-lg font-black line-clamp-1">{evt.title}</h3>
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {liveEvents.map((evt) => (
+              <div
+                key={evt.id}
+                className="bg-white rounded-3xl border border-stone-200/90 p-6 shadow-sm hover:shadow-xl hover:border-[#d96b52]/40 transition-all flex flex-col justify-between group"
+              >
+                <div className="space-y-4">
+                  <div className="relative h-52 rounded-2xl overflow-hidden bg-stone-100">
+                    <img src={evt.image} alt={evt.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#d96b52] text-white text-xs font-black flex items-center gap-1.5 shadow-md">
+                      <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                      <span>{evt.status}</span>
                     </div>
 
-                    <div className="p-4 space-y-2">
-                      <p className="text-xs text-amber-800 font-extrabold">{evt.subtitle}</p>
-                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{evt.desc}</p>
+                    <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold flex items-center justify-between">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-amber-300" />
+                        <span>{evt.date}</span>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Users className="w-3.5 h-3.5 text-amber-300" />
+                        <span>{evt.attendees}</span>
+                      </span>
                     </div>
                   </div>
 
-                  <div className="p-4 pt-0 space-y-3">
-                    <div className="grid grid-cols-2 gap-2 text-xs font-bold text-slate-700">
-                      <div className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                        <span className="line-clamp-1">{evt.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-                        <span className="line-clamp-1">{evt.location}</span>
-                      </div>
-                    </div>
+                  <h3 className="text-xl font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug">
+                    {evt.title}
+                  </h3>
 
-                    <button
-                      onClick={() => onOpenPassModal(evt.passRequired)}
-                      className="w-full py-3 rounded-xl bg-amber-900 hover:bg-amber-950 text-white font-extrabold text-xs shadow-md transition-all flex items-center justify-center gap-2"
-                    >
-                      <Video className="w-3.5 h-3.5" />
-                      <span>Join Live with Pass (₹{evt.passRequired})</span>
-                    </button>
+                  <p className="text-xs text-stone-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#d96b52]" />
+                    <span>{evt.location}</span>
+                  </p>
+
+                  <p className="text-sm text-stone-600 font-medium leading-relaxed">
+                    {evt.desc}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {evt.tags.map((tag, idx) => (
+                      <span key={idx} className="px-2.5 py-1 rounded-lg bg-stone-100 text-stone-600 text-[11px] font-semibold">
+                        #{tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <div className="pt-6 border-t border-stone-100 flex items-center justify-between mt-6">
+                  <div>
+                    <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block">Access Pass</span>
+                    <span className="text-lg font-black text-[#d96b52]">₹{evt.passRequired}</span>
+                  </div>
+
+                  <button
+                    onClick={() => onOpenPassModal(evt.passRequired)}
+                    className="px-6 py-3 rounded-full bg-[#d96b52] hover:bg-[#c25942] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-2"
+                  >
+                    <Video className="w-4 h-4" />
+                    <span>Join Live with Pass</span>
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
         {/* Tab 2: UPCOMING EVENTS */}
         {activeTab === 'future' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {futureEvents.map((evt) => (
               <div
                 key={evt.id}
-                className="rounded-2xl sm:rounded-3xl bg-white/85 border border-white shadow-lg backdrop-blur-2xl hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                className="bg-white rounded-3xl border border-stone-200/90 p-5 shadow-sm hover:shadow-xl hover:border-[#d96b52]/40 transition-all flex flex-col justify-between group"
               >
-                <div>
-                  <div className="h-36 sm:h-44 w-full relative overflow-hidden bg-slate-900 image-zoom-container">
-                    <img
-                      src={evt.image}
-                      alt={evt.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
-                    
-                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 text-slate-900 text-[10px] font-black shadow-sm">
+                <div className="space-y-3">
+                  <div className="relative h-44 rounded-2xl overflow-hidden bg-stone-100">
+                    <img src={evt.image} alt={evt.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#1a1a1a] text-[11px] font-extrabold shadow-sm">
                       {evt.countdown}
-                    </span>
-                    <span className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-amber-900 text-amber-100 text-[10px] font-black shadow-sm">
-                      ₹{evt.passRequired} Pass
-                    </span>
+                    </div>
                   </div>
 
-                  <div className="p-4 space-y-2">
-                    <h3 className="text-sm sm:text-base font-black text-slate-900 line-clamp-1">{evt.title}</h3>
-                    <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-2">{evt.desc}</p>
-                  </div>
+                  <h3 className="text-lg font-bold text-[#1a1a1a] group-hover:text-[#d96b52] transition-colors leading-snug line-clamp-1">
+                    {evt.title}
+                  </h3>
+
+                  <p className="text-xs text-stone-500 font-medium flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#d96b52]" />
+                    <span>{evt.date}</span>
+                  </p>
+
+                  <p className="text-xs text-stone-500 font-medium flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#d96b52]" />
+                    <span>{evt.location}</span>
+                  </p>
+
+                  <p className="text-xs text-stone-600 font-medium leading-relaxed line-clamp-2">
+                    {evt.desc}
+                  </p>
                 </div>
 
-                <div className="p-4 pt-0 space-y-3">
-                  <div className="text-xs font-bold text-slate-700 space-y-1">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-amber-700" />
-                      <span className="line-clamp-1">{evt.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-slate-600" />
-                      <span className="line-clamp-1">{evt.location}</span>
-                    </div>
-                  </div>
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between mt-4">
+                  <span className="text-sm font-black text-[#d96b52]">₹{evt.passRequired} Pass</span>
 
                   <button
                     onClick={() => onOpenPassModal(evt.passRequired)}
-                    className="w-full py-3 rounded-xl bg-white border border-slate-300 hover:border-amber-500 text-slate-900 font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                    className="px-4 py-2 rounded-full bg-white border border-stone-300 hover:border-[#d96b52] hover:text-[#d96b52] text-[#1a1a1a] font-bold text-xs transition-all flex items-center gap-1 shadow-sm"
                   >
-                    <span>Reserve Seat (₹{evt.passRequired})</span>
+                    <span>Reserve Seat</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -283,55 +283,44 @@ export const EventSection: React.FC<EventSectionProps> = ({ onOpenPassModal }) =
 
         {/* Tab 3: PAST EVENTS */}
         {activeTab === 'past' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pastEvents.map((evt) => (
               <div
                 key={evt.id}
-                className="rounded-2xl sm:rounded-3xl bg-white/85 border border-white shadow-lg backdrop-blur-2xl flex flex-col justify-between overflow-hidden group"
+                className="bg-white rounded-3xl border border-stone-200/90 p-5 shadow-sm flex flex-col justify-between group"
               >
-                <div>
-                  <div className="h-36 sm:h-44 w-full relative overflow-hidden bg-slate-900 image-zoom-container">
-                    <img
-                      src={evt.image}
-                      alt={evt.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
-                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 text-slate-900 text-[10px] font-mono font-bold shadow-sm">
-                      {evt.date}
-                    </span>
-                    <span className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-[10px] font-extrabold shadow-sm">
+                <div className="space-y-3">
+                  <div className="relative h-44 rounded-2xl overflow-hidden bg-stone-100">
+                    <img src={evt.image} alt={evt.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-emerald-500 text-white text-[11px] font-bold shadow-sm">
                       Completed
-                    </span>
+                    </div>
                   </div>
 
-                  <div className="p-4 space-y-2">
-                    <h3 className="text-sm sm:text-base font-black text-slate-900 line-clamp-1">{evt.title}</h3>
-                    <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-2">{evt.desc}</p>
-                  </div>
+                  <h3 className="text-lg font-bold text-[#1a1a1a] leading-snug line-clamp-1">
+                    {evt.title}
+                  </h3>
+
+                  <p className="text-xs text-stone-400 font-medium">
+                    📅 {evt.date}
+                  </p>
+
+                  <p className="text-xs text-stone-600 font-medium leading-relaxed line-clamp-2">
+                    {evt.desc}
+                  </p>
                 </div>
 
-                <div className="p-4 pt-0 space-y-3">
-                  <div className="grid grid-cols-2 gap-2 text-xs font-bold text-slate-800">
-                    <div className="p-2 rounded-xl bg-amber-50/70 border border-amber-200 text-center">
-                      <span className="text-slate-600 block text-[9px]">Participants</span>
-                      <span className="font-black text-slate-900 text-xs">{evt.participants}</span>
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between mt-4">
+                  <div className="grid grid-cols-2 gap-2 text-xs font-bold w-full">
+                    <div className="p-2 rounded-xl bg-stone-50 text-center">
+                      <span className="text-stone-400 block text-[9px] uppercase">Youth Impacted</span>
+                      <span className="font-bold text-[#1a1a1a]">{evt.participants}</span>
                     </div>
-                    <div className="p-2 rounded-xl bg-amber-50/70 border border-amber-200 text-center">
-                      <span className="text-slate-600 block text-[9px]">Impact</span>
-                      <span className="font-black text-amber-900 text-xs">{evt.impact}</span>
+                    <div className="p-2 rounded-xl bg-stone-50 text-center">
+                      <span className="text-stone-400 block text-[9px] uppercase">Key Metric</span>
+                      <span className="font-bold text-[#d96b52]">{evt.impact}</span>
                     </div>
                   </div>
-
-                  <a
-                    href="https://wa.me/918808037280?text=Hi%20Emotsiya%20Team,%20please%20share%20the%20recap%20report."
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
-                  >
-                    <Download className="w-3.5 h-3.5 text-amber-700" />
-                    <span>Impact Summary PDF</span>
-                  </a>
                 </div>
               </div>
             ))}
