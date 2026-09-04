@@ -10,6 +10,7 @@ import {
   Users,
   HeartHandshake
 } from 'lucide-react';
+import { AnimatedCount } from './AnimatedCount';
 
 interface HeroProps {
   onOpenPassModal: (tier?: '199' | '499') => void;
@@ -121,18 +122,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPassModal }) => {
               </button>
             </motion.div>
 
-            {/* Key Impact Metrics Bar */}
+            {/* Key Impact Metrics Bar with Animated Count */}
             <motion.div variants={textVariants} className="pt-6 grid grid-cols-3 gap-4 max-w-lg border-t border-slate-200/80">
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#164e63] font-serif-heading">7</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#164e63] font-serif-heading">
+                  <AnimatedCount target={7} duration={1.5} />
+                </p>
                 <p className="text-xs font-bold text-slate-500 mt-0.5 uppercase tracking-wider">National Challenges</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#0d9488] font-serif-heading">100K+</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#0d9488] font-serif-heading">
+                  <AnimatedCount target={100} suffix="K+" duration={2} />
+                </p>
                 <p className="text-xs font-bold text-slate-500 mt-0.5 uppercase tracking-wider">Youth Joined</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#164e63] font-serif-heading">1,000+</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#164e63] font-serif-heading">
+                  <AnimatedCount target={1000} suffix="+" duration={2.2} />
+                </p>
                 <p className="text-xs font-bold text-slate-500 mt-0.5 uppercase tracking-wider">Partner Schools</p>
               </div>
             </motion.div>

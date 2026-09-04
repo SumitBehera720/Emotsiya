@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Star, Quote, Building2, ShieldCheck } from 'lucide-react';
+import { AnimatedCount } from './AnimatedCount';
 
 export const ImpactPartnersSection: React.FC = () => {
   const partnerSchools = [
@@ -134,7 +135,7 @@ export const ImpactPartnersSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom National Stat Banner */}
+        {/* Bottom National Stat Banner with Animated Counting */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -143,19 +144,30 @@ export const ImpactPartnersSection: React.FC = () => {
           className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-teal-900 to-[#164e63] text-white shadow-xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
           <div>
-            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-teal-300">100K+</p>
+            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-teal-300">
+              <AnimatedCount target={100} suffix="K+" duration={2} />
+            </p>
             <p className="text-xs text-teal-100 font-bold uppercase tracking-wider mt-1">Youth Impacted</p>
           </div>
+
           <div>
-            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-white">1,000+</p>
+            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-white">
+              <AnimatedCount target={1000} suffix="+" duration={2.2} />
+            </p>
             <p className="text-xs text-teal-100 font-bold uppercase tracking-wider mt-1">Partner Institutions</p>
           </div>
+
           <div>
-            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-teal-300">50+</p>
+            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-teal-300">
+              <AnimatedCount target={50} suffix="+" duration={1.8} />
+            </p>
             <p className="text-xs text-teal-100 font-bold uppercase tracking-wider mt-1">Cities Covered</p>
           </div>
+
           <div>
-            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-white">100%</p>
+            <p className="text-3xl sm:text-4xl font-black font-serif-heading text-white">
+              <AnimatedCount target={100} suffix="%" duration={2} />
+            </p>
             <p className="text-xs text-teal-100 font-bold uppercase tracking-wider mt-1">Certified Impact</p>
           </div>
         </motion.div>
