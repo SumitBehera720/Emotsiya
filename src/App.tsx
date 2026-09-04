@@ -4,11 +4,13 @@ import { Hero } from './components/Hero';
 import { CoursesSection, Course } from './components/CoursesSection';
 import { CourseModal } from './components/CourseModal';
 import { EventSection } from './components/EventSection';
+import { ImpactPartnersSection } from './components/ImpactPartnersSection';
 import { InteractiveSection } from './components/InteractiveSection';
 import { GallerySection } from './components/GallerySection';
 import { PassModal } from './components/PassModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Footer } from './components/Footer';
+import { LoadingScreen } from './components/LoadingScreen';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 const ScrollSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -42,6 +44,9 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#f4fbfb] text-[#1e293b] flex flex-col font-sans selection:bg-[#0d9488] selection:text-white">
+      {/* 1. Initial Animated Page Loading Screen */}
+      <LoadingScreen />
+
       {/* Sticky Header Navbar */}
       <Navbar onOpenPassModal={handleOpenPassModal} />
 
@@ -50,7 +55,7 @@ export const App: React.FC = () => {
         {/* Full-Screen Hero Visual Banner */}
         <Hero onOpenPassModal={handleOpenPassModal} />
 
-        {/* 1. Masterclasses & Certified Courses Section */}
+        {/* 1. Certified Masterclasses & Courses Section */}
         <ScrollSection>
           <CoursesSection onOpenCourseModal={handleOpenCourseModal} />
         </ScrollSection>
@@ -60,12 +65,17 @@ export const App: React.FC = () => {
           <EventSection onOpenPassModal={handleOpenPassModal} />
         </ScrollSection>
 
-        {/* 3. Interactive User Engagement (Quiz & National Civic Pledge) */}
+        {/* 3. National Impact & Partner Schools Network (New Relevant Section!) */}
+        <ScrollSection>
+          <ImpactPartnersSection />
+        </ScrollSection>
+
+        {/* 4. Interactive User Engagement (Quiz & National Civic Pledge) */}
         <ScrollSection>
           <InteractiveSection onOpenPassModal={handleOpenPassModal} />
         </ScrollSection>
 
-        {/* 4. Filterable Media & Impact Gallery Section */}
+        {/* 5. Filterable Media & Impact Gallery Section */}
         <ScrollSection>
           <GallerySection />
         </ScrollSection>

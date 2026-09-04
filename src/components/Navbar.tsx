@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
   const navLinks = [
     { name: 'Courses', href: '#courses' },
     { name: 'Events', href: '#events' },
+    { name: 'Impact', href: '#impact' },
     { name: 'Take Pledge', href: '#interactive' },
     { name: 'Gallery', href: '#gallery' },
   ];
@@ -37,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo Only */}
+          {/* Brand Logo */}
           <a href="#home" className="flex items-center group">
             <img
               src="/logo.png"
@@ -47,12 +48,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPassModal }) => {
           </a>
 
           {/* Clean Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-2 px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 shadow-sm backdrop-blur-xl">
+          <nav className="hidden md:flex items-center space-x-1.5 px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 shadow-sm backdrop-blur-xl">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-5 py-1.5 text-xs font-bold text-slate-700 hover:text-[#0d9488] hover:bg-teal-50 rounded-full transition-all"
+                className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-[#0d9488] hover:bg-teal-50 rounded-full transition-all"
               >
                 {link.name}
               </a>
